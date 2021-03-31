@@ -8,6 +8,7 @@ use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,10 +135,17 @@ Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
 Route::get('reports', [ReportsController::class, 'index'])
     ->name('reports')
     ->middleware('auth');
+    
 
 // Images
 
 Route::get('/img/{path}', [ImagesController::class, 'show'])->where('path', '.*');
+
+Route::get('testing', function () {
+
+    return Inertia::render('Testing/Index');
+    
+})->name('testing');
 
 // 500 error
 
