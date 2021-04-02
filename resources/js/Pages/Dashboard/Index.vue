@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="mb-8 font-bold text-3xl">Dashboard</h1>
-   <p class="mb-8 leading-normal">Hey {{$page.props.auth.user.first_name}}! Welcome to Ping CRM, a demo app designed to help illustrate how <a class="text-indigo-500 underline hover:text-orange-600" href="https://inertiajs.com">Inertia.js</a> works.</p>
+   <p class="mb-8 leading-normal">You are on the  {{this.plan}} Plan! Welcome to Ping CRM, a demo app designed to help illustrate how <a class="text-indigo-500 underline hover:text-orange-600" href="https://inertiajs.com">Inertia.js</a> works.</p>
     <div class="mb-8 flex">
       <inertia-link class="btn-indigo" href="/500">500 error</inertia-link>
       <inertia-link class="btn-indigo ml-1" href="/404">404 error</inertia-link>
@@ -31,7 +31,14 @@ export default {
   data(){
     return{
       description:'This is a Description from db .',
+      
     }
+  },
+  computed:{
+    plan(){
+      return this.$page.props.auth.user.plan;
+    }
+
   }
 
 }

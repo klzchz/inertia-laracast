@@ -39,7 +39,9 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => function () use ($request) {
                 return [
-                    'user' => $request->user() ? [
+                    'user' => 
+
+                    $request->user() ? [
                         'id' => $request->user()->id,
                         'first_name' => $request->user()->first_name,
                         'last_name' => $request->user()->last_name,
@@ -49,6 +51,7 @@ class HandleInertiaRequests extends Middleware
                             'id' => $request->user()->account->id,
                             'name' => $request->user()->account->name,
                         ],
+                        'plan' => 'monthly',
                     ] : null,
                 ];
             },
